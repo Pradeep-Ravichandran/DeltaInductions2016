@@ -1,19 +1,14 @@
 html {
-<<<<<<< HEAD
-    background-image : url("rockets.jpg");
-=======
-    background-image : url("146424041453425.jpe");
->>>>>>> f66e9c3ab216f1c684edb8e02eea78e83068a923
-    background-position : center center fixed;
-    background-size : cover;
+background-image : url("rockets.jpg"); 
+background-position : left center fixed;
+background-size : cover;
 }
 
 body{
-    text-align : center;
+text-align : center;
 } 
 
 .box{
-<<<<<<< HEAD
 display : inline-block;
 border-radius : 10px;
 margin : 10px;
@@ -24,7 +19,7 @@ text-align : center;
 font-size : 45px;
 padding : 15px;
 font-family  : calibri;
-background-color : navy;
+background-color : black;
 }
 
 #timeblock{
@@ -35,7 +30,7 @@ text-align : center;
 
 .unit{
 font-size : 25px;
-color : white;
+color : oldlace;
 font-family : helvetica;
 }
 
@@ -43,35 +38,5 @@ font-family : helvetica;
 margin : auto;
 display : inline-block;
 color : solid navy;
-=======
-    display : inline-block;
-    border-radius : 15px;
-    margin : 10px;
-    width : 100px;
-    color : white;
-    border : 3px solid white;
-    text-align : center;
-    font-size : 40px;
-    padding : 25px;
-    font-family  : calibri;
-    background-color : green;
 }
 
-#timeblock{
-    display : inline-block;
-    margin : auto;
-    text-align : center;
-}
-
-.unit{
-    font-size : 30px;
-    color : orange;
-    font-family : verdana;
-}
-
-.block{
-    margin : auto;
-    display : inline-block;
-    color : solid navy;
->>>>>>> f66e9c3ab216f1c684edb8e02eea78e83068a923
-}
