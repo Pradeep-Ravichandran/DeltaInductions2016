@@ -1,0 +1,10 @@
+POKE - JUMP 
+       - Developed by Legendary Games!
+
+Instructions :
+$ Game starts as soon as webpage is loaded !
+$ Press SPACEBAR to protect pikachu from getting caught by Team Rocket's pokeballs.
+$ Score is calculated on the basis of no. of pokeballs dodged !
+$ If pikachu collides with pokeball, GAME IS OVER !!
+
+Enjoy Jumping! 
