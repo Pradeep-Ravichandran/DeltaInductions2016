@@ -1,31 +1,44 @@
-var t;
+var t,dy,hr,mn,sc;
 var flag = 0;
+var n = localStorage.getItem('on_load_counter');
+ 
+if (n === null) {
+    n = 0;
+}
+ 
+n++;
+ 
+localStorage.setItem("on_load_counter", n);
+if(n>=1)
+   t=setInterval(timing,1000);
 
 function input() {
 
-    var dy = document.getElementById("day").value;
-    var hr = document.getElementById("hr").value;
-    var mn = document.getElementById("min").value;
-    var sc = document.getElementById("sec").value;
+    dy=document.getElementById("day").value;
+    hr=document.getElementById("hr").value;
+    mn=document.getElementById("min").value;
+    sc=document.getElementById("sec").value;
 
-    c = ((dy * 86400) + (hr * 3600) + (mn * 60) + (sc * 1));
+    
     start1();
 }
 
 function timing() {
-
-    if (c >= 0 && flag == 1) {
-        var sec1 = Math.floor(c % 60);
-        var min1 = Math.floor((c / 60)) % 60;
-        var hr1 = Math.floor((c / 3600) % 24);
-        var day1 = Math.floor(c / (3600 * 24));
+var count = localStorage.getItem('onloadcounter');
+    count = ((dy * 86400) + (hr * 3600) + (mn * 60) + (sc * 1));
+    if (count >= 0 && flag == 1) {
+        var sec1 = Math.floor(count % 60);
+        var min1 = Math.floor((count / 60)) % 60;
+        var hr1 = Math.floor((count / 3600) % 24);
+        var day1 = Math.floor(count / (3600 * 24));
 
         document.getElementById("days").innerHTML = day1;
         document.getElementById("hours").innerHTML = hr1;
         document.getElementById("mins").innerHTML = min1;
         document.getElementById("secs").innerHTML = sec1;
 
-        c--;
+        count--;
+        localStorage.setItem("onloadcounter",c);
     }
 }
 

@@ -1,4 +1,4 @@
-var t;
+var t,count;
 var flag = 0;
 
 function input() {
@@ -9,11 +9,12 @@ function input() {
     var sc = document.getElementById("sec").value;
 
     c = ((dy * 86400) + (hr * 3600) + (mn * 60) + (sc * 1));
+    localStorage.setItem("count",c);
     start1();
 }
 
 function timing() {
-
+c=localStorage.getItem('count');
     if (c >= 0 && flag == 1) {
         var sec1 = Math.floor(c % 60);
         var min1 = Math.floor((c / 60)) % 60;
@@ -26,6 +27,7 @@ function timing() {
         document.getElementById("secs").innerHTML = sec1;
 
         c--;
+        localStorage.setItem("count",c);
     }
 }
 
@@ -33,7 +35,7 @@ function start1() {
     if(flag!=1)            //To prevent setting of more intervals for executing timing() when 'start' button is pressed twice
     {
     flag = 1;
-    t = setInterval(timing, 1000);
+    localStorage.setItem("t", setInterval(timing, 1000));
     }
 }
 
