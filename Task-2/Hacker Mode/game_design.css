@@ -7,26 +7,32 @@ html {
     font-size: 30px;
     font-family: 'Exo',sans-serif;
     font-weight: 900;
-    width: 500px;
+    background-color:crimson;
+    width: 300px;
     text-align: center;
     margin: auto;
     color: white;
     padding: 10px;
-    border-radius: 5px;
-    background-color: crimson;
+    border-radius: 5px
 }
 #instruction {
     font-family: calibri;
+    font-size: 20px;
+    font-weight: 900;
 }
-#scoreBox {
+.box {
     width: 150px;
-    border: 2px solid black;
-    margin: auto;
-    color: blue;
-    border-radius: 4px;
-    font-family: 'Exo',sans-serif;
-    background-color: teal;
+    background-color:darkgreen;
+    margin: 8px;
     color: white;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Exo' , sans-serif;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 2px solid black;
 }
 span {
     font-size: 25px;

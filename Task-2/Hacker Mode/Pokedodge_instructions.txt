@@ -1,0 +1,11 @@
+POKE - DODGE
+       - Developed by Legendary Games!
+
+Instructions :
+$ Click 'START' to start the game.
+$ Press SPACEBAR to dodge and protect pikachu from getting caught by Team Rocket's pokeballs.
+$ Score is calculated on the basis of no. of pokeballs dodged !
+$ Click 'PAUSE' to pause the game.
+$ If pikachu collides with pokeball, GAME IS OVER !!
+
+Enjoy Dodging! 

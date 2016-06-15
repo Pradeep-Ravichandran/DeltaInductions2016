@@ -1,4 +1,4 @@
-POKE - JUMP 
+POKE - DODGE 
        - Developed by Legendary Games!
 
 Instructions :
@@ -7,4 +7,4 @@ $ Press SPACEBAR to protect pikachu from getting caught by Team Rocket's pokebal
 $ Score is calculated on the basis of no. of pokeballs dodged !
 $ If pikachu collides with pokeball, GAME IS OVER !!
 
-Enjoy Jumping! 
+Enjoy Dodging! 
