@@ -1,7 +1,11 @@
 html {
     margin: auto;
     text-align: center;
-    background: url('390053.jpg')
+    
+    
+    background: url('Forest.jpg');
+  
+    background-size: cover;
 }
 #gametitle {
     font-size: 30px;
@@ -12,8 +16,8 @@ html {
     text-align: center;
     margin: auto;
     color: white;
-    padding: 10px;
-    border-radius: 5px
+    padding: 5px;
+    border-radius: 7px
 }
 #instruction {
     font-family: calibri;
@@ -22,19 +26,23 @@ html {
 }
 .box {
     width: 150px;
-    background-color:darkgreen;
+    background-color:#333399;
     margin: 8px;
     color: white;
     border-radius: 4px;
-    padding: 10px;
+    padding: 5px;
     font-size: 20px;
     text-align: center;
     font-family: 'Exo' , sans-serif;
     border-radius: 6px;
     cursor: pointer;
-    border: 2px solid black;
+    border: 2px solid #333399;
+    font-weight: 1000;
 }
 span {
     font-size: 25px;
     color: crimson
+}
+
+canvas{
 }

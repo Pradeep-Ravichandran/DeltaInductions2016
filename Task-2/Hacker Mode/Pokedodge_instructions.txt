@@ -3,9 +3,10 @@ POKE - DODGE
 
 Instructions :
 $ Click 'START' to start the game.
-$ Press SPACEBAR to dodge and protect pikachu from getting caught by Team Rocket's pokeballs.
-$ Score is calculated on the basis of no. of pokeballs dodged !
+$ Press SPACEBAR to dodge pikachu against other pokemons.
+$ Score is calculated on the basis of no. of pokemons you dodged from !
 $ Click 'PAUSE' to pause the game.
+$ Click 'RESET' to reset the game.
 $ If pikachu collides with pokeball, GAME IS OVER !!
 
 Enjoy Dodging! 

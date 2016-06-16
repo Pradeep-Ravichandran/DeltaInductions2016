@@ -1,16 +1,51 @@
-var x1 = 30;
-var y1 = 222;
-var x = 1000;
-var xx = x + 650;
-var y = 225;
-var speed = 2;
-var score = 0;
-var stop = 1;
-var breaks = 0;
-var topPoint = 0;
 var jump = new sound("Jump.wav");
 var bgm = new sound("game.mp3");
 var gameover = new sound("gameover.mp3");
+var gravity = 1;
+var paused=0;
+
+var pika = {
+    x:30,
+    y:236,
+    width:60,
+    height:60,
+    top_reach:0,
+    dodge:0,
+    collide:1,
+    score:0
+};
+
+var pokemons = new Array();
+pokemons[0]=new Image();
+pokemons[0].src='charizard.png';
+pokemons[1]=new Image();
+pokemons[1].src='blastoise.png';
+pokemons[2]=new Image();
+pokemons[2].src='blaziken.png';
+pokemons[3]=new Image();
+pokemons[3].src='pigeotto.png';
+pokemons[4]=new Image();
+pokemons[4].src='squirtle.png';
+pokemons[5]=new Image();
+pokemons[5].src='rapidash.png';
+
+
+
+var poke1 = {
+    x:1000,
+    y:233,
+    speed:2,
+    width:80,
+    height:80
+};
+
+var poke2 = {
+    x:poke1.x+450+Math.floor((Math.random() * 21)+1),
+    y:233,
+    speed:2,
+    width:80,
+    height:80
+};
 
 window.addEventListener("keydown", move, false);
 var canvas = document.getElementById("game_area");
@@ -18,14 +53,16 @@ var image1 = canvas.getContext("2d");
 var image2 = canvas.getContext("2d");
 var image3 = canvas.getContext("2d");
 
-var obstacle = new Image();
-obstacle.src = "pball.jpg";
-image1.drawImage(obstacle, x, y, 55, 55);
-image2.drawImage(obstacle, xx, y, 55, 55);
+var gameObj1 = new Image();
+gameObj1.src= pokemons[Math.floor(Math.random() * 6)].src;
+var gameObj2 = new Image();
+gameObj2.src=pokemons[Math.floor(Math.random() * 6)].src;
+image1.drawImage(pokemons[0], poke1.x, poke1.y,poke1.width,poke1.height);
+image2.drawImage(gameObj2, poke2.x, poke2.y, poke2.width,poke2.height);
 
-var gameObj = new Image();
-gameObj.src = "pika1.jpg";
-image3.drawImage(gameObj, x1, y1, 70, 70);
+var gameObj3 = new Image();
+gameObj3.src = "pikachu.gif";
+image3.drawImage(gameObj3, pika.x, pika.y, pika.width, pika.height);
 
 function sound(src) {
             this.sound = document.createElement("audio");
@@ -43,7 +80,7 @@ function sound(src) {
             }
 
 function animate() {
-    if (stop == 0) {
+    if (pika.collide == 0) {
         reqAnimFrame = window.mozRequestAnimationFrame || //since different browsers have different names for this function
             window.webkitRequestAnimationFrame ||
             window.msRequestAnimationFrame ||
@@ -55,73 +92,85 @@ function animate() {
 }
 
 function draw() {
-    image1.clearRect(x, y, 55, 55);
-    image2.clearRect(xx, y, 55, 55);
-    image3.clearRect(x1, y1, 70, 70);
+    image1.clearRect(poke1.x, poke1.y,poke1.width,poke1.height);
+    image2.clearRect(poke2.x, poke2.y,poke2.width,poke2.height);
+    image3.clearRect(pika.x, pika.y, pika.width, pika.height);
 
-    x -= speed;
-    xx -= speed;
-    if (x == 0) {
-        x = 1300;
-        score++;
-        document.getElementById("score").innerHTML = "SCORE : "+score;
+    poke1.x -= poke1.speed;
+    poke2.x -= poke2.speed;
+    
+    
+    if (poke1.x == 0) {
+        poke1.x = 1300;
+        pika.score+=10;
+        gameObj1.src= pokemons[Math.floor(Math.random() * 6)].src;
+        poke1.speed+=0.1;
+        
     }
 
-    if (xx == 0) {
-        xx = 1300;
-        score++;
-        document.getElementById("score").innerHTML = "SCORE : "+score;
+    if (poke2.x == 0) {
+        poke2.x = 1300;
+        pika.score+=10;
+        gameObj2.src= pokemons[Math.floor(Math.random() * 6)].src;
+        poke2.speed+=0.1;
     }
 
-    if (breaks == 1) { //this if part is executed if spacebar is pressed
-        if ((y1 >= 60) && (topPoint == 0)) {
-            y1 = y1 - 3;
+    if (pika.dodge == 1) { //this if part is executed if spacebar is pressed
+        if ((pika.y>= 10) && (pika.top_reach == 0)) {
+            pika.y-= 4-gravity;
         } else {
-            y1 = y1 + 3;
-            topPoint++;
+            pika.y+=4+gravity;
+            pika.top_reach++;
         }
 
-        if (y1 == 222) {
-            breaks = 0;
-            topPoint = 0;
+        if (pika.y >= 236) {
+            pika.dodge = 0;
+            pika.top_reach = 0;
         }
     }
-    image1.drawImage(obstacle, x, y, 55, 55);
-    image2.drawImage(obstacle, xx, y, 55, 55);
-    image3.drawImage(gameObj, x1, y1, 70, 70);
+    image1.drawImage(gameObj1, poke1.x, poke1.y,poke1.width,poke1.height);
+    image2.drawImage(gameObj2, poke2.x, poke2.y, poke2.width,poke2.height);
+    image3.drawImage(gameObj3, pika.x, pika.y, pika.width, pika.height);
 
-    if ((((x1 + 70) >= x) || (x1 >= x)) && (y <= y1 + 70)) {
+    if ((((pika.x + pika.width) >= poke1.x) || (pika.x >= poke1.x)) && (poke1.y <= pika.y + pika.height)) {
         bgm.stop();
         gameover.play();
         window.alert("GAME OVER !");
-        stop++;
+        pika.collide++;
         
     }
 
-    if ((((x1 + 70) >= xx) || (x1 >= xx)) && (y <= y1 + 70)) {
+    if ((((pika.x + pika.width) >= poke2.x) || (pika.x >= poke2.x)) && (poke2.y <= pika.y + pika.height)) {
         bgm.stop();
         gameover.play();
         window.alert("GAME OVER !");
-        stop++;
+        pika.collide++;
         
     }
+    document.getElementById("score").innerHTML = "SCORE : "+pika.score;
 }
 
 function move(keypress) {
     if (keypress.keyCode == 32) { // to ensure if spacebar(event keycode=32) is entered
-        breaks = 1;
+        pika.dodge = 1;
         jump.play();
         
     }
 }
 
 function pause(){
-    stop++;
+    pika.collide++;
+    pause++;
     bgm.stop();
 }
 
 function start(){
-    stop=0;
+    pika.collide=0;
+    if(pause==0){
+        pika.score=0;
+    }
     bgm.play();
     animate();
 }
+
+
