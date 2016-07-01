@@ -1,0 +1,60 @@
+input {
+    width: 350px;
+    height: 40px;
+    font-family: 'exo', sans-serif;
+    font-size: 20px;
+    display: inline-block;
+    margin: 25px;
+    text-align: center;
+    border-radius: 2px;
+    padding: 15px;
+    background-color: white;
+    border: 1px solid grey;
+}
+form {
+    font-family: 'exo', sans-serif;
+    font-size: 25px;
+    padding: 5px;
+    margin: 10px;
+}
+#signin {
+    text-align: center;
+    margin-left: 26%;
+    background: white;
+    width: 650px;
+    border-radius: 4px;
+}
+#error {
+    font-size: 15px;
+    margin-bottom: 0px;
+    color: red;
+    font-family: 'exo', sans-serif;
+}
+button {
+    font-family: 'Exo', sans-serif;
+    font-size: 20px;
+    padding: 8px;
+    border: none;
+    border-radius: 3px;
+    text-align: center;
+    background-color: crimson;
+    color: white;
+    cursor: pointer;
+    width: 220px;
+}
+p {
+    text-align: center;
+    color: white;
+    font-family: 'exo', sans-serif;
+    margin: auto;
+    font-size: 25px;
+}
+span {
+    color: grey;
+    font-size: 20px;
+    margin: 0px;
+}
+body {
+    background-image: url("back.jpg");
+    text-align: center;
+}

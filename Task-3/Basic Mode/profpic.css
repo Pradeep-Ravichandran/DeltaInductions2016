@@ -1,0 +1,39 @@
+ body {
+     background: url('back.jpg');
+ }
+ #signin {
+     font-family: 'exo', sans-serif;
+     text-align: center;
+     margin-left: 0px margin-top: 15x;
+     margin-right: 70px;
+     background-color: #ffffff;
+     width: 450px;
+     border-radius: 4px;
+ }
+ img {
+     height: 250px;
+     width: 250px;
+     margin: 50px;
+ }
+ h3,
+ h2,
+ h1 {
+     font-family: 'exo', sans-serif;
+     margin: 5px;
+ }
+ input {
+     font-family: 'exo', sans-serif;
+ }
+ button {
+     font-family: 'exo', sans-serif;
+     font-size: 20px;
+     padding: 10px 20px 10px 20px;
+     border: none;
+     border-radius: 2px;
+     text-align: center;
+     background-color: teal;
+     color: #ffffff;
+     margin: 10px;
+     cursor: pointer;
+     width: 230px;
+ }
