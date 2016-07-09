@@ -11,8 +11,8 @@
      border-radius: 4px;
  }
  img {
-     height: 250px;
-     width: 250px;
+     height: 215px;
+     width: 220px;
      margin: 50px;
  }
  h3,
@@ -37,3 +37,6 @@
      cursor: pointer;
      width: 230px;
  }
+button:hover{
+            background: green;
+        }

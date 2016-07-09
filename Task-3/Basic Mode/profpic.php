@@ -22,5 +22,6 @@
         </button>
       </form>
     </div>
+    <h4 style="color:white;background:black;font-family:'exo',sans-serif;text-align:center">&copy; DeltaConnect | All rights reserved</h4>
   </body>
 </html>

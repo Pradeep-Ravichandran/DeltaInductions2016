@@ -1,86 +1,102 @@
-<?php
-session_start();
-$Email="";
-$Password=$image="";
-$con = mysqli_connect('localhost','root','','delta');
-if(!$con)
-{
-die('Error Connecting DataBase');
-}
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-$Email = $_POST['LoginEmail'];
-$Password = md5($_POST['LoginPassword']);
-$userexist=false;
-$myEmail="";
-$_SESSION['email']=$Email;
-$_SESSION['password']=$Password;
-$sql = "SELECT * FROM users where email='$Email' AND password='$Password' ";
-$result = mysqli_query($con,$sql);
-$count = mysqli_num_rows($result); //no of matched records
-if($count==1)
-{$_SESSION['userexist']=true;
-$_SESSION['email']=$Email;}
-}
-if($_SESSION['userexist']==true){
-$myEmail=$_SESSION['email'];
-$sql2 = "SELECT * FROM users where email='$myEmail' ";
-$result2 = mysqli_query($con,$sql2);  
-$row = mysqli_fetch_array($result2,MYSQLI_ASSOC);
-$image = $row['image'];
-}
-$dir = "Upload/";   // Profile pics upload directory
-?>
 <!DOCTYPE html>
 <html>
   <head>
     <title>
-      <?php echo $row['username']; ?>
+      <?php
+echo $row['username']; ?>
     </title>
     <link rel="stylesheet" type="text/css" href="profile.css">
     <link href='https://fonts.googleapis.com/css?family=Exo' rel='stylesheet' type='text/css'>
   </head>
   <body>
+   <?php
+session_start();
+$Email = "";
+$Password = $image = "";
+$userexist = false;
+$con = mysqli_connect('localhost', 'root', '', 'delta');
+
+if (!$con)
+	{
+	die('Error Connecting DataBase');
+	}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST")
+	{
+	$Email = $_POST['LoginEmail'];
+	$Password = md5($_POST['LoginPassword']);
+	$myEmail = "";
+	$_SESSION['email'] = $Email;
+	$_SESSION['password'] = $Password;
+	$sql = "SELECT * FROM users where email='$Email' AND password='$Password' ";
+	$result = mysqli_query($con, $sql);
+	$count = mysqli_num_rows($result); //no of matched records
+	if ($count == 1)
+		{
+		$_SESSION['userexist'] = true;
+		$_SESSION['email'] = $Email;
+		}
+	  else
+		{
+		$_SESSION['loginerr'] = "Oops! Invalid Email or Password !";
+		header('Location:login.php');
+		}
+	}
+
+if ($_SESSION['userexist'] == true)
+	{
+	$myEmail = $_SESSION['email'];
+	$sql2 = "SELECT * FROM users where email='$myEmail' ";
+	$result2 = mysqli_query($con, $sql2);
+	$row = mysqli_fetch_array($result2, MYSQLI_ASSOC);
+	$image = $row['image'];
+	$_SESSION['image'] = $image;
+	}
+
+$dir = "Upload/"; // Profile pics upload directory
+
+?>
     <h1 style="color:white;text-align:left;margin-left:15px;background-color:crimson;padding:15px" >DeltaConnect
     </h1>
-    <h2 style="text-align:center;color:white;margin:0px">Welcome to your profile 
+    <h3 style="text-align:center;color:white;margin:0px">Welcome to your profile 
       <?php echo $row['username']; ?> !
-    </h2>
+    </h3>
     <div id="image"> 
-      <img style="margin-left:30px;margin:30px" src="<?php echo "$dir"."$image" ; ?>">  
-      <br>
-      <br>
-      <br>
-      <h1 style="color:white;text-align:center;margin-right:12px"> 
+      <img style="margin-left:30px;margin:30px" src="<?php echo "$dir" . "$image"; ?>">  
+      <br />
+      <br />
+      <br />
+      <h1 style="color:white;text-align:center;margin-right:15px"> 
         <?php echo $row['username']; ?>
       </h1>
     </div>
     <div id="options" style="float:right">
-      <br>
+      <br />
       <form action="edit.php">
         <button>EDIT INFO
         </button>
       </form>
-      <br>
-      <br>
+      <br />
+      <br />
       <form action="changepic.php">
         <button>CHANGE PROFILE PIC
         </button>
       </form>
-      <br>
-      <br>
+      <br />
+      <br />
       <form action="profile.php">
         <button>MY PROFILE
         </button>
       </form>
-      <br>
-      <br>
+      <br />
+      <br />
       <form action="homepg.html">
         <button>LOG OUT
         </button>
       </form>
     </div>
     <div id="details">
-      <br>
+      <br />
       <h3>
         <span style="color:black;margin-left:107px"> FIRST 
           <span style="margin:10px">NAME
@@ -129,5 +145,6 @@ $dir = "Upload/";   // Profile pics upload directory
         <?php echo $row['phoneno']; ?>
       </h3> 
     </div>
+     <h4 style="color:white;background:black;font-family:'exo',sans-serif;text-align:center">&copy; DeltaConnect | All rights reserved</h4>
   </body>
 </html>
